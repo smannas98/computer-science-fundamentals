@@ -1,0 +1,43 @@
+Short Answer:
+
+1. Programmers use pseudocode to convey what they are trying to accomplish in a way that most people would understand.
+
+2. If you ran pseudocode on your computer nothing would happen.
+
+Programming Assignment:
+
+1. 
+INPUT number1
+INPUT number2
+IF number1 is greater than number2
+	RETURN number1
+ELSE 
+	RETURN number2
+
+2.
+INPUT numbers 1-100
+FOR when index is not equal to or greater than index of numbers array
+	ADD number to newArr
+
+END FOR
+RETURN newArr
+
+3.
+INPUT entry we are looking for
+FOR loop through phonebook array 
+	IF check if current looped index is === to entry 
+		yes, RETURN entry
+	END IF
+END FOR
+
+4.
+let phonebook = [empty array for now]
+let Entry = [whatever entry we are looking for]
+
+function findPhonebookEntry(x, y){
+	For(i=0; i < x.length; i++){
+		If(x[i] === y){
+			return x[i];
+		};
+	}
+}
