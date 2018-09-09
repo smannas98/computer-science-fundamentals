@@ -1,0 +1,109 @@
+1. clean code is the standard to set for your code. It allows ease of readability and helps with other developers being able to understand and work on your code with ease.
+
+2. After reading the article on Toyota’s bad coding practices, I have to say that another example of something that relies on safety-critical coding would be boilers. Boilers in and of themselves are virtual time bombs and without the right checks and balances it would overload and potentially explode causing severe damage. Boilers come equipped with failsafes designed in the code to shut down the system in the event of excessive temperature or heat. If the code was not made to an acceptable standard it is possible that the code could fail to act on these safety measures and let the system keep running.
+
+3. I would not consider this to be clean code. There are too many notes in the code detailing what is going on when instead the code should be written in a more descriptive way that is easily understandable. An example of the refactored code would look like this:
+
+FUNCTION converDegrees(fahrenheit, celsius)
+
+	IF celsius = “fahrenheit” THEN
+
+		SET celsius to (fahrenheit-32) * (5/9)
+
+		PRINT celsius
+
+	ELSE IF celsius = “celsius” THEN
+	
+		
+		SET fahrenheit to (celsius * 1.8000) + (32)
+		
+		PRINT fahrenheit
+
+	END IF
+
+END FUNCTION
+
+
+4. I would consider this code to be clean code.
+
+5. 
+a)
+
+FUNCTION checkOutCusomer(subTotal, discountRate, paymentType)
+
+	SET variable totalDue = subTotal + discountRate + paymentType + tax
+
+	PRINT “you total due is: ” + totalDue
+
+	IF paymentType = ‘cash’ THEN
+
+		GET cashAmount
+
+		SET variable changeDue = cashAmount - totalDue
+		
+		PRINT “Change due: ” + changeDue
+
+	ELSE IF paymentType = ‘credit card’ THEN 
+	
+		GET totalDue
+
+		PRINT “your credit card has been charged: ” + totalDue
+	
+	END IF
+
+END FUNCTION
+
+b)
+
+
+FUNCTION checkOutBook(book, guest)
+
+	IF guest.accountActive = true AND 
+	guest.hasOverdueBooks != true AND 
+	guest.oustandingFees != true THEN
+
+		APPEND book to guest.books
+
+		SET book.status to “checked out”
+
+		PRINT “your books have been issued.”
+
+	ELSE 
+
+		PRINT “unable to check out book.”
+
+	END IF
+
+END FUNCTION
+
+c) I do not see anything wrong with this code. It’s readability and functionality seems up to par and I can easily understand what each function is doing.
+
+6. 
+
+function findSquareRoot(array) {
+	let sumTotal = [];
+	for(let i=0; i < array.length; i++) {
+		sumTotal.concat(array[i]);
+		return sumTotal
+	};
+	IF(Math.sqrt(sumTotal) % 1 === 0) {
+		return Math.sqrt(sumTotal);
+	} else {
+		return sumTotal;
+	};
+}
+
+7. 
+
+function isDuplicate(array) {
+	let newArr = [];
+	for (let i=0; i < array.length; i++) {
+		If (array[i] === array[i]) {
+			return TRUE;
+		} else {
+			return FALSE;
+		};
+	};
+}
+
+	
