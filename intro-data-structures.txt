@@ -1,0 +1,47 @@
+1. 
+
+a) 
+let amusementLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike”];
+
+b) 
+function addPerson(amusementLine){
+	amusementLine.map(){
+		amusementLine.push(‘Mary’);
+	}
+} 
+
+c)
+function locatePerson(amusementLine){
+	for(let i=0; i < amusementLine.length; i++){
+		if(amusementLine[i] === “Josh”){
+			return amusementLine[i];
+		};
+	};
+}
+
+d)
+function locatePerson(amusementLine){
+	for(let i=0; i < amusementLine.length; i++){
+		if(amusementLine[i] === “Emily”){
+			return amusementLine[i];
+		}else {
+			return “Emily is not in line.”;
+		};
+	};
+}
+
+e) 
+function changeIndex(amusementLine){
+	amusementLine.splice(1, 0, ‘Melissa’);
+}
+
+f)
+function deletePerson(amusementLine){
+	amusementLine.splice(3, 1);
+}
+
+2.
+another real world example for a data structure would be how many employees are currently employed at my company. It could be structured using a simple array.
+
+3. My data structure would allow developers look at a simplified list of all the employees currently employed and they could add or delete anyone they wanted within the array.
+
