@@ -1,0 +1,54 @@
+1. 
+A stack utilizes the the last in first out method, which means that the most recent object to be stored in the stack will be the first one to leave the stack. A queue utilizes the first in first out method which takes the very first object put in the queue and finishes it before starting on the next iteration.
+
+2. 
+Stacks and Queues are two of the most popular types of data structures. They both handle high traffic data requests and try and resolve them as fast as possible.
+
+3. 
+I would use a stack data structure because if you are using the UNDO/REDO options you are using it on the last word you typed. Since a stack uses the last in first out method, the last string added to the data structure would be the first string to be acted upon.
+
+—-PROGRAMMING QUESTIONS—
+
+1.
+(assuming a stack data structure has already been created)
+function reverseString(string) {
+	let stack = stack data structure;
+	let reversed = [];
+
+	for (let value of string) {
+		return value
+		stack.push(value)
+	};
+
+	while(stack.index < 1) {
+		stack.pop(value);
+		reverse.splice(value)
+	};
+	return reverse;
+}
+
+2.
+class stack {
+	let queue = [];
+
+	pop() {
+		queue.pop(queue.element);
+	}
+
+	push() {
+		queue.push(queue.element);
+	}
+};
+
+3.
+class queue {
+	let queue = [];
+
+	enqueue() {
+		queue.shift(queue.element);
+	}
+
+	dequeue() {
+		queue.unshift(queue.element);
+	}
+};
