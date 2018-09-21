@@ -1,0 +1,86 @@
+1.
+A linked list is really good for memory as at can be allocated anywhere and does not have to go consecutively down the memory slots. Although it is really good for memory it can also be pretty bad for time management if the linked list gets too big. Instead of just going to the index of whatever you want in an array, with a linked list you have to start at the beginning and work your way down until you get to what you were looking for.
+
+2.
+A real world example of a linked list would be a deli queue at a supermarket. nobody is technically ‘in line’ but instead is given a number and can freely go back to shopping so long as they get back when their number is called.
+
+—programming questions—
+
+1.
+The pseudo code for the push function won’t work because it is setting the new node to different parameters without first checking to see the status of the head. Checking to see if you even have a node.head should be the first thing you do after creating the node. A functional implementation of the pseudocode would be:
+
+function PUSH
+
+	create new Node
+
+	IF head is null
+
+		set head to new Node
+
+	ELSE 
+		set head to current Node
+
+		WHILE current Node has a reference to the next Node
+
+			set current Node to the next Node after current Node
+
+		END WHILE
+
+		set next Node in reference to new Node
+	END IF
+
+END FUNCTION
+
+2.
+function findDuplicate() {
+
+	let currentNode = this.head;
+
+	while (currentNode.next) {
+		
+		if (currentNode.value === currentNode.next.value) {
+		
+			currentNode.next = currentNode.next.next;
+		}
+		
+		currentNode = currentNode.next;
+	}
+
+	if (this.tail) {
+		
+		if (this.tail.value === currentNode.value) {
+
+			this.tail.value = null;
+		}
+	}
+}
+
+3.
+function reverselist() {
+
+	let result = null;
+
+	let stack = [];
+
+	let currentNode = this.head
+
+	while (currentNode) {
+
+		stack.push(currentNode);
+
+		currentNode = currentNode.next;
+	}
+
+	result = stack.pop() || [];
+
+	currentNode = result;
+
+	while (currentNode) {
+	
+		currentNode.next = stack.pop();
+
+		currentNode = currentNode.next;
+	}
+
+	return result;
+}; 
