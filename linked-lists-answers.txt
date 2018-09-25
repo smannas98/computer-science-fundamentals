@@ -32,55 +32,97 @@ function PUSH
 END FUNCTION
 
 2.
-function findDuplicate() {
+class Node {
 
-	let currentNode = this.head;
+ constructor(val) {
 
-	while (currentNode.next) {
-		
-		if (currentNode.value === currentNode.next.value) {
-		
-			currentNode.next = currentNode.next.next;
-		}
-		
-		currentNode = currentNode.next;
-	}
+   this.value = val;
 
-	if (this.tail) {
-		
-		if (this.tail.value === currentNode.value) {
+   this.next = null;
 
-			this.tail.value = null;
-		}
-	}
+ }
+
 }
 
+class LinkedList {
+
+	constructor() {
+
+		this.head = null;
+
+	}
+
+	function findDuplicate() {
+
+		let currentNode = this.head;
+
+		while (currentNode.next) {
+		
+			if (currentNode.value === currentNode.next.value) {
+		
+				currentNode.next = currentNode.next.next;
+			}
+		
+			currentNode = currentNode.next;
+		}
+
+		if (this.tail) {
+		
+			if (this.tail.value === currentNode.value) {
+
+				this.tail.value = null;
+			}
+		}
+	};
+};
+
 3.
-function reverselist() {
+class Node {
 
-	let result = null;
+ constructor(val) {
 
-	let stack = [];
+   this.value = val;
 
-	let currentNode = this.head
+   this.next = null;
 
-	while (currentNode) {
+ }
 
-		stack.push(currentNode);
+}
 
-		currentNode = currentNode.next;
-	}
+class LinkedList {
 
-	result = stack.pop() || [];
+ constructor() {
 
-	currentNode = result;
+   this.head = null;
 
-	while (currentNode) {
+ }
+ 
+	function reverselist() {
+
+		let result = null;
+
+		let stack = [];
+
+		let currentNode = this.head
+
+		while (currentNode) {
+
+			stack.push(currentNode);
+
+			currentNode = currentNode.next;
+		}
+
+		result = stack.pop() || [];
+
+		currentNode = result;
+
+		while (currentNode) {
 	
-		currentNode.next = stack.pop();
+			currentNode.next = stack.pop();
 
-		currentNode = currentNode.next;
-	}
+			currentNode = currentNode.next;
+		}
 
-	return result;
-}; 
+		return result;
+	}; 
+};
