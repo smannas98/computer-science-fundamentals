@@ -1,0 +1,294 @@
+1. a hash table is a data structure that forms key-value pairs by linking the value to a key.
+
+2. a conversion from a string to a numerical index.
+
+3. a hash table stores data by linking the value to a key and then hashing the key (assigning a numerical index) to store in it’s table.
+
+4. hash tables and objects essentially the same, except that hash tables use key-value pairs.
+
+5. 
+-object
+
+- hash table
+
+- hash table
+
+- hash table
+
+-hash table
+
+6.
+let hash = (string, max) => {
+    let hash = 0;
+    for (let i = 0; i < string.length; i++) {
+        hash += string.charCodeAt(i);
+    }
+    return hash % max;
+}
+
+let HashTable = function() {
+    let storage = [];
+    const storageLimit = 10;
+
+    this.print = function () {
+        console.log(storage)
+    }
+
+    this.add = function(value) {
+        let key = value.phone;
+        let index = hash(key, storageLimit);
+        if (storage[index] === undefined) {
+            storage[index] = [
+                [key, value]
+            ];
+        } else {
+            let inserted = false;
+            for (let i = 0; i < storage[index].length; i++) {
+                if (storage[index][i][0] === key) {
+                    storage[index][i][1] = value;
+                    inserted = true;
+                }
+            }
+            if (inserted === false) {
+                storage[index].push([key, value]);
+            }
+        }
+    }
+
+    this.remove = function(key) {
+        let index = hash(key, storageLimit);
+        if (storage[index].length === 1 && storage[index][0][0] === key) {
+            delete storage[index];
+        } else {
+            for (let i = 0; i < storage[index]; i++) {
+                if (storage[index][i][0] === key) {
+                    delete storage[index][i];d
+                }
+            }
+        }
+    }
+
+    this.lookup = function(key) {
+        let index = hash(key, storageLimit);
+        if (storage[index] === undefined) {
+            return undefined;
+        } else {
+            for (let i = 0; i < storage[index].length; i++) {
+                if (storage[index][i][0] === key) {
+                    return storage[index][i][1];  
+                }
+            }
+        }
+    }
+}
+
+let ht = new HashTable();
+ht.add({
+    name: 'john doe',
+    address: '124 road street Nowhere, NW 11111',
+    phone: '111-222-3333'
+});
+ht.add({
+    name: 'jane doe',
+    address: '125 road street Nowhere, NW 11111',
+    phone: '222-333-4444'
+});
+ht.add({
+    name: 'john smith',
+    address: '126 road street Nowhere, NW 11111',
+    phone: '333-444-5555'
+});
+ht.add({
+    name: 'jane smith',
+    address: '126 road street Nowhere, NW 11111',
+    phone: '444-555-6666'
+});
+console.log(ht.lookup('111-222-3333'));
+ht.print();
+
+7.
+let hash = (string, max) => {
+    let hash = 0;
+    for (let i = 0; i < string.length; i++) {
+        hash += string.charCodeAt(i);
+    }
+    return hash % max;
+}
+
+let HashTable = function() {
+    let storage = [];
+    const storageLimit = 10;
+
+    this.print = function () {
+        console.log(storage)
+    }
+
+    this.add = function(value) {
+        let key = value.name;
+        let index = hash(key, storageLimit);
+        if (storage[index] === undefined) {
+            storage[index] = [
+                [key, value]
+            ];
+        } else {
+            let inserted = false;
+            for (let i = 0; i < storage[index].length; i++) {
+                if (storage[index][i][0] === key) {
+                    storage[index][i][1] = value;
+                    inserted = true;
+                }
+            }
+            if (inserted === false) {
+                storage[index].push([key, value]);
+            }
+        }
+    }
+
+    this.remove = function(key) {
+        let index = hash(key, storageLimit);
+        if (storage[index].length === 1 && storage[index][0][0] === key) {
+            delete storage[index];
+        } else {
+            for (let i = 0; i < storage[index]; i++) {
+                if (storage[index][i][0] === key) {
+                    delete storage[index][i];d
+                }
+            }
+        }
+    }
+
+    this.lookup = function(key) {
+        let index = hash(key, storageLimit);
+        if (storage[index] === undefined) {
+            return undefined;
+        } else {
+            for (let i = 0; i < storage[index].length; i++) {
+                if (storage[index][i][0] === key) {
+                    return storage[index][i][1];  
+                }
+            }
+        }
+    }
+}
+
+let ht = new HashTable();
+ht.add({
+    productId: '123-1234-12345',
+    category: 'fruits & veggies',
+    name: 'carrots',
+    inStock: true
+});
+ht.add({
+    productId: '123-1324-13342',
+    category: 'fruits & veggies',
+    name: 'celery',
+    inStock: false
+});
+ht.add({
+    productId: '321-3214-54321',
+    category: 'frozen foods',
+    name: 'frozen pizza',
+    inStock: false
+});
+ht.add({
+    productId: '324-4322-1111',
+    category: 'bakery goods',
+    name: 'cookies',
+    inStock: true
+});
+console.log(ht.lookup('cookies'));
+ht.print();
+
+8.
+
+let hash = (string, max) => {
+    let hash = 0;
+    for (let i = 0; i < string.length; i++) {
+        hash += string.charCodeAt(i);
+    }
+    return hash % max;
+}
+
+let HashTable = function() {
+    let storage = [];
+    const storageLimit = 10;
+
+    this.print = function () {
+        console.log(storage)
+    }
+
+    this.add = function(value) {
+        let key = value.publisher + value.publicationDate;
+        let index = hash(key, storageLimit);
+        if (storage[index] === undefined) {
+            storage[index] = [
+                [key, value]
+            ];
+        } else {
+            let inserted = false;
+            for (let i = 0; i < storage[index].length; i++) {
+                if (storage[index][i][0] === key) {
+                    storage[index][i][1] = value;
+                    inserted = true;
+                }
+            }
+            if (inserted === false) {
+                storage[index].push([key, value]);
+            }
+        }
+    }
+
+    this.remove = function(key) {
+        let index = hash(key, storageLimit);
+        if (storage[index].length === 1 && storage[index][0][0] === key) {
+            delete storage[index];
+        } else {
+            for (let i = 0; i < storage[index]; i++) {
+                if (storage[index][i][0] === key) {
+                    delete storage[index][i];d
+                }
+            }
+        }
+    }
+
+    this.lookup = function(key) {
+        let index = hash(key, storageLimit);
+        if (storage[index] === undefined) {
+            return undefined;
+        } else {
+            for (let i = 0; i < storage[index].length; i++) {
+                if (storage[index][i][0] === key) {
+                    return storage[index][i][1];  
+                }
+            }
+        }
+    }
+}
+
+let ht = new HashTable();
+ht.add({
+    publisher: 'publisher one',
+    publicationDate: '1/1/2018',
+    articles: '21',
+    headLine: 'newspapers'
+});
+ht.add({
+    publisher: 'publisher two',
+    publicationDate: '2/2/2018',
+    articles: '22',
+    headLine: 'newspapers'
+});
+ht.add({
+    publisher: 'publisher three',
+    publicationDate: '3/3/2018',
+    articles: '23',
+    headLine: 'newspapers'
+});
+ht.add({
+    publisher: 'publisher four',
+    publicationDate: '4/4/2018',
+    articles: '24',
+    headLine: 'newspapers'
+});
+console.log(ht.lookup('publisher two'  + '2/2/2018'));
+ht.print();
