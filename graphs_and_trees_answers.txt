@@ -1,0 +1,276 @@
+1. A binary tree is a tree data structure that consists of nodes that link to each other in a hierarchal set up. It is unique to a other trees because it can only have up to two child nodes off one root node. It increases in value going right, and decreases in value going left.
+
+2. A heuristic is a best guess for a calculation.
+
+3. Guessing about a subject without doing as much research on it as you can.
+
+4. A DFS goes down one branch as far as it possibly can before backtracking. A BFS explores all neighbor nodes before moving down to the next set of nodes.
+
+5. A undirected, a-cyclic, unweighted graph is a graph that allows two-way connection between nodes that do not loop back and do not have travel time associated with them.
+
+6. A binary search tree is a undirected, a-cyclic , unweighted graph.
+
+——programming questions————
+
+1.
+I would create a function that loops through the binary search tree and compare it the value i have stored.
+
+class Node {
+    constructor(data, left = null, right = null) {
+        this.data = data;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+class BST {
+    constructor() {
+        this.root = null;
+    }
+
+    insert(data) {
+        const node = this.root;
+        if (node === null) {
+            this.root = new Node(data);
+            return;
+        } else {
+            const searchTree = function(node) {
+                if (data < node.data) {
+                    if (node.left === null) {
+                        node.left = new Node(data);
+                        return;
+                    } else if (node.left !== null) {
+                        return searchTree(node.left);
+                    }
+                } else if (data > node.data) {
+                    if (node.right === null) {
+                        node.right = new Node(data);
+                        return;
+                    } else if (node.right !== null) {
+                        return searchTree(node.right);
+                    }
+                } else {
+                    return null;
+                }
+            }
+            return searchTree(node);
+        }
+    }
+
+    findMin() {
+        let current = this.root;
+        while (current.left !== null) {
+            current = current.left;
+        }
+        return current.data;
+    }
+
+    findMax() {
+        let current = this.root;
+        while (current.right !== null) {
+            current = current.right;
+        }
+        return current.data;
+    }
+
+    find(data) {
+        let current = this.root;
+        while (current.data !== data) {
+            if (data < current.data) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+            if (current === null) {
+                return null;
+            }
+        }
+        return current;
+    }
+
+    isPresent(data) {
+        let current = this.root;
+        while (current) {
+            if (data === current.data) {
+                return true;
+            }
+            if (data < current.data) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+        }
+        return false;
+    }
+
+    remove(data) {
+        const removeNode = function(node, data) {
+            if (node == null) {
+                return null;
+            }
+
+            if (data == node.data) {
+                if (node.left == null && node.right == null) {
+                    return null;
+                }
+
+                if (node.left == null) {
+                    return node.right;
+                }
+
+                if (node.right == null) {
+                    return node.left;
+                }
+
+                let tempNode = node.right;
+                while (tempNode.left !== null) {
+                    tempNode = tempNode.left;
+                }
+
+                node.data = tempNode.data;
+                node.right = removeNode(node.right, tempNode.data);
+                return node;
+            } else if (data < node.data) {
+                node.left = removeNode(node.left, data);
+                return node;
+            } else {
+                node.right = removeNode(node.right, data);
+                return node;
+            }
+        }
+        this.root = removeNode(this.root, data);
+    }
+}
+
+const bst = new BST();
+
+bst.insert(4);
+bst.insert(2);
+bst.insert(6);
+bst.insert(1);
+bst.insert(3);
+bst.insert(5);
+bst.insert(7);
+//bst.remove(7);
+console.log(bst.findMin());
+console.log(bst.findMax());
+console.log(bst.isPresent(7));
+
+
+2.
+class Node {
+    constructor(data, left = null, right = null) {
+        this.data = data;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+class BST {
+    constructor() {
+        this.root = null;
+    }
+
+    insert(data) {
+        const node = this.root;
+        if (node === null) {
+            this.root = new Node(data);
+            return;
+        } else {
+            const searchTree = function(node) {
+                if (data < node.data) {
+                    if (node.left === null) {
+                        node.left = new Node(data);
+                        return;
+                    } else if (node.left !== null) {
+                        return searchTree(node.left);
+                    }
+                } else if (data > node.data) {
+                    if (node.right === null) {
+                        node.right = new Node(data);
+                        return;
+                    } else if (node.right !== null) { 
+                        return searchTree(node.right);
+                    }
+                } else {
+                    return null;
+                }
+            }
+            return searchTree(node);
+        }
+    }
+
+    find(data) {
+        let current = this.root;
+        while (current.data !== data) {
+            if (data < current.data) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+            if (current === null) {
+                return null;
+            }
+        }
+        return current;
+    }
+
+    isPresent(data) {
+        let count = 0;
+        while (current) {
+            if (data === current.data) {
+                return count;
+            }
+            if (data < current.data) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+            count++;
+        }
+        return count;
+    }
+
+    distanceBetweenNodes() {
+        let lca = function(node, n1, n2) {
+            if(node == null) {
+                return null;
+            } 
+
+            let val = node.data;
+
+            if (n1 < val && n2 < val) {
+                return lca(node.left, n1, n2);
+            } else if (n1 > val && n2 > val) {
+                return lca(node.right, n1, n2);
+            }
+
+            return node;
+        }
+
+        let distance = function(lca, n1, n2) {
+                let rootNode = lca.node;
+                if (rootNode == node.data) {
+                     return 0;
+                 } else if (rootNode.data > node.data) {
+                    return 1 + distance(root.left, node);
+                 }  else if (rootNode.data < node.data) {
+                     return 1 + distance(root.right, node);
+                 }
+            }
+        }
+    }
+}
+
+const bst = new BST();
+
+bst.insert(4);
+bst.insert(2);
+bst.insert(6);
+bst.insert(1);
+bst.insert(3);
+bst.insert(5);
+bst.insert(7);
+console.log(bst.findMin());
+console.log(bst.findMax());
+
