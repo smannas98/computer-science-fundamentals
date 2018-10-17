@@ -57,22 +57,6 @@ class BST {
         }
     }
 
-    findMin() {
-        let current = this.root;
-        while (current.left !== null) {
-            current = current.left;
-        }
-        return current.data;
-    }
-
-    findMax() {
-        let current = this.root;
-        while (current.right !== null) {
-            current = current.right;
-        }
-        return current.data;
-    }
-
     find(data) {
         let current = this.root;
         while (current.data !== data) {
@@ -152,8 +136,6 @@ bst.insert(3);
 bst.insert(5);
 bst.insert(7);
 //bst.remove(7);
-console.log(bst.findMin());
-console.log(bst.findMax());
 console.log(bst.isPresent(7));
 
 
@@ -244,12 +226,12 @@ class BST {
             } else if (n1 > val && n2 > val) {
                 return lca(node.right, n1, n2);
             }
-
-            return node;
+            let lca = node;
+            return lca;
         }
 
         let distance = function(lca, n1, n2) {
-                let rootNode = lca.node;
+                let rootNode = lca;
                 if (rootNode == node.data) {
                      return 0;
                  } else if (rootNode.data > node.data) {
@@ -271,6 +253,6 @@ bst.insert(1);
 bst.insert(3);
 bst.insert(5);
 bst.insert(7);
-console.log(bst.findMin());
-console.log(bst.findMax());
+
+
 
