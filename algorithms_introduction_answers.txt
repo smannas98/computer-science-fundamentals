@@ -1,0 +1,43 @@
+1. 
+Making coffee:
+
+	TURN ON coffee maker 
+		ADD ground coffee beans
+		ADD water
+		ADD coffee mug 
+	TURN OFF coffee maker
+
+washing dishes:
+	
+	RINSE each dish one a time
+		LOAD rinsed dishes into dishwasher
+		ADD dish detergent to dishwasher
+	RUN dishwasher
+
+doing laundry:
+
+	SEPARATE clothes from lights and darks
+		LOAD lights into washing machine
+		ADD laundry detergent
+		RUN washing machine
+
+		LOAD lights into dryer
+		RUN dryer
+
+		LOAD darks into washing machine
+		ADD laundry detergent
+		RUN washing machine
+
+		UNLOAD lights from dryer
+		LOAD darks into dryer
+		RUN dryer
+
+2.
+Starbucks has mastered their algorithm for making coffee. They are one of the largest coffee chains in the country and continue to use the same coffee making algorithm they have been using.
+
+Fender is a guitar manufacturer that has proven itself to be one the best guitars to get. The quality and workmanship that go into their guitar making algorithm is unmatched.
+
+NVIDIA Geforce has made a name of it’s own as far as GPUs go. The new algorithm for the RTX cards is still flawed, but lightyears ahead of any other competitor in the market.
+
+3.
+I believe an efficient algorithm would be something that uses the least amount of steps and returns to best possible outcome. An inefficient algorithm would be if it had way too many steps to take for the same outcome.
