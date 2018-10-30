@@ -81,7 +81,15 @@ class Node {
             prev = current;
             current = current.next;
         }
-    }
+      }
+     
+      print() {
+         let currentNode = this.head;
+         while(currentNode) {
+           console.log(currentNode.value);
+           currentNode = currentNode.next;
+         }
+       }
 
    }
    
@@ -92,23 +100,19 @@ class Node {
        list.insert('four')
        list.insert('three')
        list.findDuplicate();
-       console.log(list.head);
-       console.log(list.head.next);
-       console.log(list.head.next.next);
-       console.log(list.head.next.next.next);
+       list.print();
 
 3.
 class Node {
 
-    constructor(val, next, prev) {
+    constructor(val) {
    
       this.value = val;
-      this.next = next;
-      this.prev = prev;
+      this.next = null;
    
     }
    
-   }
+}
    
    class LinkedList {
    
@@ -119,15 +123,19 @@ class Node {
     }
 
         insert(val) {
-            const newNode = new Node(val, this.head, null);
+            const newNode = new Node(val);
 
-            if (this.head) {
-                this.head.prev = newNode;
+            if (this.head === null) {
+                this.head = newNode;
             } else {
-                this.tail = newNode;
+                let currentNode = this.head
+                while(currentNode.next) {
+                  currentNode = currentNode.next;
+                }
+                
+                currentNode.next = newNode;
             }
 
-            this.head = newNode;
         }
     
        reverseList() {
@@ -146,18 +154,35 @@ class Node {
            }
    
            result = stack.pop() || [];
+         
+           this.head = null;
+ 
    
-           currentNode = result;
-   
-           while (currentNode) {
+           while (result) {
        
-               currentNode.next = stack.pop();
+               this.insert(result.value);
    
-               currentNode = currentNode.next;
+               result = stack.pop();
            }
    
-           return result;
-       }; 
-   };
+           return this;
+       }
+     
+       print() {
+         let currentNode = this.head;
+         while(currentNode) {
+           console.log(currentNode.value);
+           currentNode = currentNode.next;
+         }
+       }
+   }
 
 const list = new LinkedList('one');
+
+list.insert('l');
+list.insert('i');
+list.insert('s');
+list.insert('t');
+list.print();
+list.reverseList();
+list.print();
