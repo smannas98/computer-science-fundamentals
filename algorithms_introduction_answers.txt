@@ -2,35 +2,62 @@
 Making coffee:
 
 	TURN ON coffee maker 
-		ADD ground coffee beans
-		ADD water
-		ADD coffee mug 
+		 IF water is in coffee maker
+			CHECK if water is warm
+				IF water is warm
+					ADD coffee grounds
+				ELSE
+					heat water
+					ADD coffee grounds
+				END IF
+			END CHECK
+		RUN coffee maker
+		REMOVE used coffee filter
 	TURN OFF coffee maker
 
 washing dishes:
 	
-	RINSE each dish one a time
-		LOAD rinsed dishes into dishwasher
-		ADD dish detergent to dishwasher
+	LOAD dishwasher
+		RINSE dishes off in sink
+		IF solids are stuck on dishes
+			RINSE again
+		ELSE 
+			load dishes into dishwasher in a neat way
+		END IF
+	END LOAD
 	RUN dishwasher
+		IF soap tablet is present
+			START the cycle
+		ELSE
+			INSERT soap tablet
+			START the cycle
+		END IF
+	END RUN
 
 doing laundry:
 
-	SEPARATE clothes from lights and darks
-		LOAD lights into washing machine
-		ADD laundry detergent
-		RUN washing machine
-
-		LOAD lights into dryer
+	SORT SEQUENCE
+		IF clothing item is dark
+			SORT into pile 1
+		ELSE IF clothing item is heavy (towels, blankets, etc.)
+			SORT into pile 2
+		ElSE    // whites && lights
+			SORT into pile 3
+		END IF
+	END SORT
+	LOADING WASHER
+		LOAD pile 1 into washing machine
+		DUMP laundry detergent
+		RUN  washing machine
+	END LOADING 
+	DRY laundry
+		REMOVE pile 1 from washing machine
+		LOAD pile 1 into dryer
+		ADD dryer sheet 
 		RUN dryer
+	END DRY SEQUENCE
+	** repeat for piles 2 and 3
 
-		LOAD darks into washing machine
-		ADD laundry detergent
-		RUN washing machine
-
-		UNLOAD lights from dryer
-		LOAD darks into dryer
-		RUN dryer
 
 2.
 Starbucks has mastered their algorithm for making coffee. They are one of the largest coffee chains in the country and continue to use the same coffee making algorithm they have been using.
