@@ -34,36 +34,38 @@ END FUNCTION
 2.
 class Node {
 
-    constructor(val, next, prev) {
+    constructor(val) {
    
       this.value = val;
-      this.next = next;
-      this.prev = prev;
+      this.next = null;
    
     }
    
-   }
+}
    
    class LinkedList {
    
-       constructor() {
+    constructor() {
    
-           this.head = null;
-           this.tail = null;
+      this.head = null;
    
-       }
-     
-       insert(val) {
-           const newNode = new Node(val, this.head, null);
-   
-           if (this.head) {
-               this.head.prev = newNode;
-           } else {
-               this.tail = newNode;
-           }
-   
-           this.head = newNode;
-       }
+    }
+
+        insert(val) {
+            const newNode = new Node(val);
+
+            if (this.head === null) {
+                this.head = newNode;
+            } else {
+                let currentNode = this.head
+                while(currentNode.next) {
+                  currentNode = currentNode.next;
+                }
+                
+                currentNode.next = newNode;
+            }
+
+        }
    
        findDuplicate() {
         let prev = this.head;
@@ -73,13 +75,14 @@ class Node {
         while(current != null) {
             if(!hash[current.data]) {
                 hash[current.data] = true;
+              prev = current;
+              current = current.next;
             } else {
+              //update prev and current accordingly
                 prev.next = current.next;
                 this._size--;
             }
 
-            prev = current;
-            current = current.next;
         }
       }
      
@@ -95,10 +98,13 @@ class Node {
    
    const list = new LinkedList('one')
    
-       list.insert('two')
-       list.insert('three')
-       list.insert('four')
-       list.insert('three')
+       list.insert('two');
+       list.insert('three');
+       list.insert('four');
+       list.insert('three');
+       list.insert('five');
+       list.insert('four');
+       list.insert('two');
        list.findDuplicate();
        list.print();
 
