@@ -197,13 +197,15 @@ class BST {
         return current;
     }
 
-    isPresent(data) {
+    findDistanceFrom(startingNode, nodeValue) {
+        let current = startingNode;
+        
         let count = 0;
         while (current) {
-            if (data === current.data) {
+            if (nodeValue === current.data) {
                 return count;
             }
-            if (data < current.data) {
+            if (nodeValue < current.data) {
                 current = current.left;
             } else {
                 current = current.right;
@@ -212,36 +214,38 @@ class BST {
         }
         return count;
     }
-
-    distanceBetweenNodes() {
-        let lca = function(node, n1, n2) {
-            if(node == null) {
-                return null;
-            } 
-
-            let val = node.data;
-
-            if (n1 < val && n2 < val) {
-                return lca(node.left, n1, n2);
-            } else if (n1 > val && n2 > val) {
-                return lca(node.right, n1, n2);
-            }
-            let lca = node;
-            return lca;
-        }
-
-        let distance = function(lca, n1, n2) {
-                let rootNode = lca;
-                if (rootNode == node.data) {
-                     return 0;
-                 } else if (rootNode.data > node.data) {
-                    return 1 + distance(root.left, node);
-                 }  else if (rootNode.data < node.data) {
-                     return 1 + distance(root.right, node);
-                 }
-            }
-        }
+  
+    findDistanceBetween(node, n1, n2) {
+      let LCA = this.findLCA(node, n1, n2);
+      let node1distance = this.findDistanceFrom(LCA, n1);
+      let node2distance = this.findDistanceFrom(LCA, n2);
+      return node1distance + node2distance;
     }
+      
+    
+    findLCA(node, n1, n2) {
+        if(node == null) {
+          return null;
+        } 
+
+        let val = node.data;
+
+        if (n1 < val && n2 < val) {
+          return lca(node.left, n1, n2);
+        } else if (n1 > val && n2 > val) {
+          return lca(node.right, n1, n2);
+        }
+        let lca = node;
+          return lca;
+    }
+     
+      
+      //find distance from lca to node1
+      //find distance from lca to node2
+      //return sum
+    
+       
+
 }
 
 const bst = new BST();
@@ -253,6 +257,8 @@ bst.insert(1);
 bst.insert(3);
 bst.insert(5);
 bst.insert(7);
+console.log(bst.findDistanceBetween(bst.root, 1, 7));
+
 
 
 
