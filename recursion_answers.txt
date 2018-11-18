@@ -1,0 +1,38 @@
+1. iteration and recursion are very similar in that they both define an algorithm to complete a specific task. However, the way they achieve these solutions differ. iteration involves using a loop to go through the array to complete a task. Recursion, instead of looping, calls itself again with parameters moving up incrementally. 
+
+2. five algorithms commonly implemented by recursion include factorial, fibonacci, maximum, string reversal, and greatest common dividend.
+
+3. you should use recursion when the algorithm can be defined as a combination of sub-results of known cases(factorial). It should be avoided if there is a chance it will continuously repeat calculations, hindering performance(fibonacci). 
+
+4. they are all similar in that they take the same parameters and return the same output. But how they handle that data is where they differ. in the iterative version of the algorithms, the functions will loop through the data and use a set of instructions for each time it loops. In the recursive version though, instead of having set instructions each time it loops, it just calls itself again with different parameters.
+
+5. 
+function countElements(array){
+  if(array.length){
+    return 1 + countElements(array.slice(1))
+  } else {
+    return 0;
+  }
+}
+
+let length = [1, 2, 3, 4, 8, 12, 45]
+
+console.log(countElements(length));
+
+6. 
+var isPalindrome = function(string) {
+    var length = string.length;
+    if (length === 0 || length === 1) {
+        return true;
+    }
+    
+    if (string[0] === string[length - 1]) {
+        return isPalindrome( string.slice(1, length - 1) );
+    }
+    
+    return false;
+};
+
+console.log(isPalindrome('racecar'));
+
+7. this exhibits properties of recursion because every time you click the ‘recursion’ link, it will still bring you to the same page asking if you meant ‘recursion’. It does this because each time you type out or click ‘recursion’ the data set doesn’t change, so the search algorithm recursively does the same thing every time it is called.
