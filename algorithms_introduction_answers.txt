@@ -1,62 +1,65 @@
 1. 
 Making coffee:
 
-	TURN ON coffee maker 
-		 IF water is in coffee maker
-			CHECK if water is warm
-				IF water is warm
-					ADD coffee grounds
-				ELSE
-					heat water
-					ADD coffee grounds
-				END IF
-			END CHECK
-		RUN coffee maker
-		REMOVE used coffee filter
-	TURN OFF coffee maker
+FOR EACH coffee cup
+	IF water is in dishwasher
+		CHECK water temperature
+		IF water temperature is hot
+			ADD coffee grounds
+		ELSE
+			HEAT water
+			ADD coffee grounds
+		END IF
+	ELSE
+		ADD water
+		REPEAT IF statement with updated parameter
+	END IF
+	RUN coffee maker
+END FOR
+END FUNCTION
 
 washing dishes:
 	
-	LOAD dishwasher
-		RINSE dishes off in sink
-		IF solids are stuck on dishes
-			RINSE again
-		ELSE 
-			load dishes into dishwasher in a neat way
-		END IF
-	END LOAD
-	RUN dishwasher
-		IF soap tablet is present
-			START the cycle
-		ELSE
-			INSERT soap tablet
-			START the cycle
-		END IF
-	END RUN
+FOR EACH dirty dish
+	CHECK for solids 
+	IF solids found
+		RINSE dish
+		LOAD into dishwasher
+	ELSE 
+		LOAD into dishwasher
+	END IF
+END FOR
+IF dishwasher is full
+	PLACE dish detergent into detergent dispenser
+	START washer cycle
+ELSE
+	wait for dishwasher to be full
+END IF
+END FUNCTION
 
 doing laundry:
 
-	SORT SEQUENCE
-		IF clothing item is dark
-			SORT into pile 1
-		ELSE IF clothing item is heavy (towels, blankets, etc.)
-			SORT into pile 2
-		ElSE    // whites && lights
-			SORT into pile 3
-		END IF
-	END SORT
-	LOADING WASHER
-		LOAD pile 1 into washing machine
-		DUMP laundry detergent
-		RUN  washing machine
-	END LOADING 
-	DRY laundry
-		REMOVE pile 1 from washing machine
-		LOAD pile 1 into dryer
-		ADD dryer sheet 
-		RUN dryer
-	END DRY SEQUENCE
-	** repeat for piles 2 and 3
+FOR EACH article of clothing
+	DETERMINE type of clothing (dark, light, heavy, delicate)
+	IF clothing = dark
+		SORT into dark pile
+	ELSE IF clothing = light
+		SORT into light pile
+	ELSE IF clothing = heavy
+		SORT into heavy pile
+	ELSE IF clothing = delicate
+		SORT into delicate pile
+	END IF
+	
+END FOR
+FOR EACH pile of clothing
+	LOAD into washing machine
+	INSERT laundry detergent into washing machine
+	RUN washing machine
+	LOAD pile into dryer after washing machine has completed cycle
+	RUN dryer
+END FOR
+END FUNCTION
 
 
 2.
