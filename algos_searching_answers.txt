@@ -1,0 +1,42 @@
+1. a real life scenario that uses linear search would be when your looking for food in your fridge. You open the door looking for something and you scan over all the items in the fridge until you land on what it is that your looking for.
+
+2. a real life scenario that uses binary search would be when I’m looking for the right drill bit at work, assuming I put all the bits back in order where they should be, I just start at the middle and either go bigger or smaller depending on the circumstance.
+
+3. it would take 7 iterations using linear search to get ‘g’
+
+4. it would take 2 iterations using binary search to get ‘g’
+
+5. I would choose linear search because the collection is unsorted meaning the function would be pretty much useless
+
+6. I would choose binary search because since the collection is sorted, I could half the amount of items i would have to iterate over in each loop
+
+—programming assignment—
+
+1. 
+
+function binarySearch(binaryArray, x) {
+  var low = 0;
+  var high = binaryArray.length - 1;
+  
+  while(low <= high) {
+    var mid = Math.floor(low + high % 2);
+    if(binaryArray[mid] > x) {
+      high = mid - 1;
+    } else if(binaryArray[mid] < x) {
+      low = mid + 1;
+    } else {
+      return binaryArray[mid];
+    }
+  }
+}
+
+2.
+
+function linearSearch(array, x) {
+  var count = 0;
+  for( var i = 0; i < array.length; i++) {
+    if (array[i] === x) {
+      return array[i];
+    }
+  }
+}
