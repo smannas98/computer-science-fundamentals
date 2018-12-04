@@ -4,7 +4,7 @@
 
 3. it would take 7 iterations using linear search to get ‘g’
 
-4. it would take 2 iterations using binary search to get ‘g’
+4. it would take 3 iterations using binary search to get ‘g’
 
 5. I would choose linear search because the collection is unsorted meaning the function would be pretty much useless
 
