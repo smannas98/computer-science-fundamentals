@@ -7,17 +7,22 @@
 4. they are all similar in that they take the same parameters and return the same output. But how they handle that data is where they differ. in the iterative version of the algorithms, the functions will loop through the data and use a set of instructions for each time it loops. In the recursive version though, instead of having set instructions each time it loops, it just calls itself again with different parameters.
 
 5. 
-function countElements(array){
-  if(array.length){
-    return 1 + countElements(array.slice(1))
-  } else {
-    return 0;
-  }
+function countElements (arr, val) {
+  let newVal = val || 0;
+  arr.forEach((thingInArray) => {
+    if (Array.isArray(thingInArray)) {
+      newVal += countElements(thingInArray);
+    } else {
+      newVal += 1;
+    }
+  });
+  return newVal;
 }
 
-let length = [1, 2, 3, 4, 8, 12, 45]
+let array = [1, 4, 6, 3, [5, 4, 8, 12]];
 
-console.log(countElements(length));
+
+console.log(countElements(array));
 
 6. 
 var isPalindrome = function(string) {
