@@ -1,0 +1,58 @@
+1. 
+
+FUNCTION bubbleSort(collection)
+  REPEAT
+    SET swapped to FALSE;
+  
+    FOR i = FIRST INDEX of collection to LAST INDEX of collection - 1
+  
+      IF collection[i] > collection[i + 1] 
+      
+        SET tmp to collection[i]
+        SET collection [i] to collection[i + 1]
+        SET coleection[i + 1] to tmp
+        SET swapped to TRUE
+      END IF
+    END FOR
+  UNTIL swapped is FALSE
+  
+  RETURN collection
+  
+END FUNCTION
+
+2. 
+
+FUNCTION quickSort(collection)
+  
+  IF length of collection == 0 THEN 
+    RETURN empty array
+  END IF
+  
+  SET leftCollection to empty array
+  SET rightCollection to empty array
+  SET pivot to FIRST INDEX of collection
+
+  FOR i = FIRST INDEX to LAST INDEX of collection
+    
+    IF collection[i] < pivot THEN 
+    
+       APPEND collection[i] TO leftCollection
+       
+    ELSE 
+      
+       APPEND collection[i] TO rightCollection
+       
+    END IF
+  END FOR
+  
+  RETURN quickSort(leftCollection) CONCAT (pivot, quickSort(rightCollection))
+END FUNCTION
+
+3.  
+
+Merge Sort is more efficient because it divides the entire collection of data into it’s smallest form to make sorting through huge sets of data much more manageable. Instead of having to iterate over the data set multiple times in a row, it just splits everything into smaller sets of data and sorts by there.
+
+Quick Sort is more efficient because it chooses a starting point, or “pivot” point and compares every piece of data to that one pivot point. Once an element is found that is smaller than that pivot point, that element becomes the new pivot point. This method ensures that there will always be at least one element properly sorted each iteration making it a much better solution as opposed to constantly iterating over the same set of data to achieve the same result.
+
+4.
+Bucket Sort is a sorting method that creates ’n’ amount of buckets to store the elements in. Each element is stored into it’s corresponding bucket, and from there each bucket gets individually sorted via any sorting method of your choosing. After each individual bucket is sorted, the buckets are then merged in order. Your finished product is now a sorted array. The ideal input for bucket sort is input distributed over a range. this way, you can be sure your buckets are working properly.
